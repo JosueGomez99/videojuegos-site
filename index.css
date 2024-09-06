@@ -5,13 +5,14 @@ body {
   padding: 0;
   background-color: #f4f4f4;
   color: #333;
+  box-sizing: border-box;
 }
 
 /* Estilo para el encabezado */
 header {
   background: linear-gradient(to right, #000000db, #1dd9b3); /* Gradiente de verde y azul */
   color: #fff;
-  padding: 30px; /* Más espacio para un diseño más amplio */
+  padding: 20px; /* Espacio ajustado para dispositivos móviles */
   text-align: center;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
   border-bottom: 4px solid #00796b; /* Línea inferior verde oscuro */
@@ -21,7 +22,7 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 2em; /* Tamaño de fuente más grande */
+  font-size: 1.8em; /* Tamaño de fuente más grande ajustado */
   font-weight: 700; /* Negrita más pronunciada */
   letter-spacing: 1.5px; /* Espaciado entre letras para mayor claridad */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Sombra del texto para mayor legibilidad */
@@ -41,7 +42,7 @@ header h2 {
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  width: 150px; /* Tamaño del logo más grande */
+  width: 120px; /* Ajusta el tamaño del logo para pantallas pequeñas */
   height: auto;
 }
 
@@ -56,7 +57,7 @@ header h2 {
 .header-nav a {
   color: #fff;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1em; /* Tamaño de fuente ajustado para mejor visualización en móviles */
   font-weight: 500;
   transition: color 0.3s, text-shadow 0.3s;
 }
@@ -128,6 +129,7 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden; /* Asegura que el contenido no se salga de la card */
 }
 
 .store-card img, .card img {
@@ -218,6 +220,7 @@ main {
     opacity: 0.8;
   }
 }
+
 #price-section {
   display: none; /* Oculta la sección por defecto */
   padding: 20px;
@@ -225,4 +228,55 @@ main {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  header {
+    padding: 15px;
+  }
+
+  .header-logo {
+    width: 100px; /* Ajuste del tamaño del logo en pantallas pequeñas */
+  }
+
+  header h1 {
+    font-size: 1.5em; /* Ajuste del tamaño de fuente para h1 */
+  }
+
+  header h2 {
+    font-size: 0.9em; /* Ajuste del tamaño de fuente para h2 */
+  }
+
+  #search-button {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  #game-search {
+    padding: 10px;
+  }
+
+  #store-cards-container, #price-comparison-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Ajuste de columnas para pantallas pequeñas */
+  }
+
+  .store-card, .card {
+    padding: 10px;
+    overflow: hidden; /* Asegura que el contenido no se salga de la card */
+  }
+
+  .store-card h3 {
+    font-size: 1em; /* Tamaño de fuente más pequeño para nombres largos */
+    white-space: nowrap; /* Evita el salto de línea */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Muestra elipsis si el texto es muy largo */
+  }
+
+  .card h3 {
+    font-size: 0.9em; /* Tamaño de fuente más pequeño para nombres largos */
+    white-space: nowrap; /* Evita el salto de línea */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Muestra elipsis si el texto es muy largo */
+  }
 }
