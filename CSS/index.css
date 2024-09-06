@@ -1,99 +1,152 @@
+/* Estilos básicos */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 header {
-  background: #005596;
+  background-color: #005596;
   color: #fff;
-  padding: 1rem;
+  padding: 15px;
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  margin: 0 1rem;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
+header h1 {
+  margin: 0;
+  font-size: 2em;
+  font-weight: bold;
 }
 
 main {
-  padding: 2rem;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-#filters, #search, #pagination {
-  margin-bottom: 1rem;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
-}
-
-.card, .store-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  background-color: #f9f9f9;
+#search-section {
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.card img, .store-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 4px;
+#game-search {
+  padding: 12px;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-.card h3, .store-card h3 {
-  font-size: 1.2em;
-  margin: 8px 0;
-}
-
-.card p, .store-card p {
-  margin: 4px 0;
-}
-
-.card a, .store-card a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.card a:hover, .store-card a:hover {
-  text-decoration: underline;
-}
-
-.store-card img {
-  max-height: 150px;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  margin: 0.5rem;
+#search-button {
+  padding: 12px 25px;
+  margin-left: 10px;
+  background-color: #005596;
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
 }
 
-button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
+#search-button:hover {
+  background-color: #004080;
 }
 
-button#prev-page, button#next-page {
-  background: #005596;
-  color: #fff;
+#store-section, #price-section {
+  margin-bottom: 20px;
 }
 
-#game-details {
-  margin-top: 2rem;
+#store-section h2, #price-section h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+#store-cards-container, #price-comparison-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.store-card, .card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.store-card img, .card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.store-card:hover, .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.store-card.selected {
+  border-color: #005596;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card {
+  font-size: 0.9em;
+  background-color: #fafafa;
+}
+
+.card p {
+  margin: 10px 0;
+  color: #555;
+}
+
+.card a {
+  text-decoration: none;
+  color: #005596;
+  font-weight: bold;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+/* Estilos para el overlay de carga */
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: none; /* Inicialmente oculto */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegúrate de que esté encima de otros contenidos */
+  transition: opacity 0.3s ease; /* Añadido para una transición suave */
+}
+
+#loading-message {
+  font-size: 1.5em;
+  color: #333;
+  animation: pulse 1.5s infinite; /* Animación de pulso */
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.8;
+  }
 }

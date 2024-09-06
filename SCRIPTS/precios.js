@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const storeCardsContainer = document.getElementById("store-cards-container");
     const priceContainer = document.getElementById("price-comparison-container");
+    const loadingOverlay = document.getElementById("loading-overlay");
 
     // Mapa de tiendas permitidas con sus IDs
     const allowedStores = {
@@ -32,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch('https://www.cheapshark.com/api/1.0/stores')
             .then(response => response.json())
             .then(data => {
-                console.log('Datos de la API de tiendas:', data); // Mensaje de depuración
+                console.log('Datos de la API de tiendas:', data);
 
                 if (Array.isArray(data)) {
                     const filteredStores = data.filter(store => allowedStores[store.storeID]);
@@ -71,13 +72,15 @@ document.addEventListener("DOMContentLoaded", () => {
         storeCardsContainer.innerHTML = html;
     };
 
-    const fetchGamesByStore = async (storeID) => {
-        priceContainer.innerHTML = "<p>Cargando juegos...</p>"; // Mensaje de carga
+    const fetchGamesByStore = async (storeID, searchTerm = "") => {
+        // Mostrar overlay de carga
+        loadingOverlay.style.display = "flex";
 
         try {
-            const response = await fetch(`https://www.cheapshark.com/api/1.0/deals?storeID=${storeID}&upperPrice=15`);
+            const searchQuery = searchTerm ? `&title=${encodeURIComponent(searchTerm)}` : "";
+            const response = await fetch(`https://www.cheapshark.com/api/1.0/deals?storeID=${storeID}&upperPrice=15${searchQuery}`);
             const data = await response.json();
-            console.log('Datos de la API de juegos:', data); // Mensaje de depuración
+            console.log('Datos de la API de juegos:', data);
 
             if (data && Array.isArray(data)) {
                 renderGames(data);
@@ -88,11 +91,17 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (err) {
             priceContainer.innerHTML = "<p>Hubo un error al cargar los juegos.</p>";
             console.error('Error en fetchGamesByStore:', err);
+        } finally {
+            // Ocultar overlay de carga
+            setTimeout(() => {
+                loadingOverlay.style.display = "none";
+                document.getElementById("price-section").scrollIntoView({ behavior: 'smooth' });
+            }, 300); // Tiempo suficiente para que el overlay sea visible
         }
     };
 
     const renderGames = (games) => {
-        console.log('Datos de los juegos:', games); // Agrega este registro
+        console.log('Datos de los juegos:', games);
 
         if (games.length === 0) {
             priceContainer.innerHTML = "<p>No se encontraron juegos.</p>";
@@ -103,13 +112,15 @@ document.addEventListener("DOMContentLoaded", () => {
         games.forEach((game) => {
             const savings = parseFloat(game.savings || 0);
             const storeName = storeMap[game.storeID]?.name || "Tienda desconocida";
-            const price = game.normalPrice || "N/A"; // Asegúrate de que esta propiedad coincida con la respuesta de la API
+            const price = game.normalPrice || "N/A";
+            const salePrice = game.salePrice || "N/A";
 
             html += `
                 <div class="card" data-deal-id="${game.dealID}">
                     <img src="${game.thumb}" alt="${game.title}">
                     <h3>${game.title}</h3>
-                    <p>Precio: $${price}</p>
+                    <p>Precio normal: $${price}</p>
+                    <p>Precio con descuento aproximado: $${salePrice}</p>
                     ${savings ? `<p>Descuento: ${savings.toFixed(2)}%</p>` : ""}
                     <p>Disponible en: ${storeName}</p>
                     <a href="https://www.cheapshark.com/redirect?dealID=${game.dealID}" target="_blank">Ver en ${storeName}</a>
@@ -122,13 +133,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const handleStoreClick = (event) => {
         const storeCard = event.target.closest(".store-card");
         if (storeCard) {
+            document.querySelectorAll(".store-card").forEach(card => card.classList.remove("selected"));
+            storeCard.classList.add("selected");
+
             const storeID = storeCard.getAttribute("data-store-id");
-            console.log('ID de tienda seleccionado:', storeID); // Agrega este registro
+            console.log('ID de tienda seleccionado:', storeID);
             fetchGamesByStore(storeID);
         }
     };
 
+    const handleSearchButtonClick = () => {
+        const searchTerm = document.getElementById("game-search").value.trim();
+        const selectedStore = document.querySelector(".store-card.selected");
+        const storeID = selectedStore ? selectedStore.getAttribute("data-store-id") : null;
+
+        if (storeID) {
+            fetchGamesByStore(storeID, searchTerm);
+        } else {
+            priceContainer.innerHTML = "<p>Seleccione una tienda primero.</p>";
+        }
+    };
+
     storeCardsContainer.addEventListener("click", handleStoreClick);
+    document.getElementById("search-button").addEventListener("click", handleSearchButtonClick);
 
     // Fetch inicial
     fetchStoreImages();

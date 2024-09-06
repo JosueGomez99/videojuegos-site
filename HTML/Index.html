@@ -1,60 +1,38 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comparación de Precios de Videojuegos</title>
-  <link rel="stylesheet" href="/CSS/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Store</title>
+    <link rel="stylesheet" href="/CSS/index.css">
 </head>
 <body>
-  <header>
-    <h1>Comparación de Precios de Videojuegos</h1>
-    <nav>
-      <ul>
-        <li><a href="#home">Inicio</a></li>
-        <li><a href="#news">Noticias</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <h1>Game Store</h1>
+    </header>
 
-  <main>
-    <section id="store-cards">
-      <h2>Tiendas Disponibles</h2>
-      <div id="store-cards-container" class="grid-container">
-        <!-- Las tarjetas de tiendas se insertarán aquí dinámicamente -->
-      </div>
-    </section>
+    <main>
+        <section id="search-section">
+            <input type="text" id="game-search" placeholder="Buscar juego...">
+            <button id="search-button">Buscar</button>
+        </section>
 
-    <section id="search">
-      <label for="game-search">Buscar juegos:</label>
-      <input type="text" id="game-search" placeholder="Buscar por título">
-      <button id="search-btn">Buscar</button>
-    </section>
+        <section id="store-section">
+            <h2>Tiendas</h2>
+            <div id="store-cards-container"></div>
+        </section>
 
-    <section id="prices">
-      <h2>Precios Destacados</h2>
-      <div id="price-comparison-container" class="grid-container">
-        <!-- Los precios se insertarán aquí dinámicamente -->
-      </div>
-    </section>
+        <section id="price-section">
+            <h2>Lista de Videojuegos</h2>
+            <div id="price-comparison-container"></div>
+        </section>
+    </main>
 
-    <section id="pagination">
-      <button id="prev-page">Página Anterior</button>
-      <button id="next-page">Página Siguiente</button>
-    </section>
+    <script src="/SCRIPTS/precios.js"></script>
+    <!-- Overlay para animación de carga -->
+<div id="loading-overlay">
+  <div id="loading-message">Cargando juegos...</div>
+</div>
 
-    <section id="game-details">
-      <h2>Detalles del Juego</h2>
-      <div id="game-details-container">
-        <!-- Detalles del juego se insertarán aquí dinámicamente -->
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2024 Videojuegos Hub - Todos los derechos reservados.</p>
-  </footer>
-
-  <script src="/SCRIPTS/precios.js"></script>
 </body>
 </html>
