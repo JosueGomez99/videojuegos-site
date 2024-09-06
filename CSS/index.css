@@ -7,18 +7,63 @@ body {
   color: #333;
 }
 
+/* Estilo para el encabezado */
 header {
-  background-color: #005596;
+  background: linear-gradient(to right, #000000db, #1dd9b3); /* Gradiente de verde y azul */
   color: #fff;
-  padding: 15px;
+  padding: 30px; /* Más espacio para un diseño más amplio */
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+  border-bottom: 4px solid #00796b; /* Línea inferior verde oscuro */
+  position: relative; /* Para posicionar elementos dentro del encabezado si es necesario */
+  z-index: 1000; /* Asegura que el encabezado esté encima de otros contenidos */
 }
 
 header h1 {
   margin: 0;
-  font-size: 2em;
-  font-weight: bold;
+  font-size: 2em; /* Tamaño de fuente más grande */
+  font-weight: 700; /* Negrita más pronunciada */
+  letter-spacing: 1.5px; /* Espaciado entre letras para mayor claridad */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Sombra del texto para mayor legibilidad */
+}
+
+header h2 {
+  margin: 10px 0 0; /* Espaciado superior */
+  font-size: 1em; /* Tamaño de fuente para el subtítulo */
+  font-weight: 400; /* Fuente más ligera */
+  color: #e0f2f1; /* Color claro para el subtítulo */
+  letter-spacing: 0.5px; /* Espaciado entre letras */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Sombra del texto para legibilidad */
+}
+
+.header-logo {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px; /* Tamaño del logo más grande */
+  height: auto;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Espacio entre los enlaces */
+  margin-top: 10px;
+}
+
+.header-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 500;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.header-nav a:hover {
+  color: #b2dfdb; /* Color al pasar el ratón */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra del texto al pasar el ratón */
 }
 
 main {
@@ -26,6 +71,8 @@ main {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+/* Otros estilos permanecen igual */
 
 #search-section {
   margin-bottom: 20px;
@@ -44,7 +91,7 @@ main {
 #search-button {
   padding: 12px 25px;
   margin-left: 10px;
-  background-color: #005596;
+  background-color: #00bfae;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -54,7 +101,7 @@ main {
 }
 
 #search-button:hover {
-  background-color: #004080;
+  background-color: #009688;
 }
 
 #store-section, #price-section {
@@ -95,7 +142,7 @@ main {
 }
 
 .store-card.selected {
-  border-color: #005596;
+  border-color: #00bfae;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
@@ -111,7 +158,7 @@ main {
 
 .card a {
   text-decoration: none;
-  color: #005596;
+  color: #00bfae;
   font-weight: bold;
 }
 
@@ -170,4 +217,12 @@ main {
   100% {
     opacity: 0.8;
   }
+}
+#price-section {
+  display: none; /* Oculta la sección por defecto */
+  padding: 20px;
+  background-color: #e0f2f1; /* Fondo suave para que combine con el estilo del encabezado */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }

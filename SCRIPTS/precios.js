@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const storeCardsContainer = document.getElementById("store-cards-container");
+    const priceSection = document.getElementById("price-section");
     const priceContainer = document.getElementById("price-comparison-container");
     const loadingOverlay = document.getElementById("loading-overlay");
 
@@ -95,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Ocultar overlay de carga
             setTimeout(() => {
                 loadingOverlay.style.display = "none";
+                priceSection.style.display = 'block'; // Mostrar la sección de comparación de precios
                 document.getElementById("price-section").scrollIntoView({ behavior: 'smooth' });
             }, 300); // Tiempo suficiente para que el overlay sea visible
         }
