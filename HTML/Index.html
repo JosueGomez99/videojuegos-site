@@ -3,23 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Videojuegos Hub</title>
+  <title>Comparación de Precios de Videojuegos</title>
   <link rel="stylesheet" href="/CSS/index.css">
 </head>
 <body>
   <header>
+    <h1>Comparación de Precios de Videojuegos</h1>
     <nav>
       <ul>
-        <li><a href="noticias.html">Noticias</a></li>
-        <li><a href="precios.html">Comparación de Precios</a></li>
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#news">Noticias</a></li>
       </ul>
     </nav>
-    <h1>Bienvenido a Videojuegos Hub</h1>
-    <p>El sitio para estar al tanto de las noticias y precios de videojuegos</p>
   </header>
+
+  <main>
+    <section id="store-cards">
+      <h2>Tiendas Disponibles</h2>
+      <div id="store-cards-container" class="grid-container">
+        <!-- Las tarjetas de tiendas se insertarán aquí dinámicamente -->
+      </div>
+    </section>
+
+    <section id="search">
+      <label for="game-search">Buscar juegos:</label>
+      <input type="text" id="game-search" placeholder="Buscar por título">
+      <button id="search-btn">Buscar</button>
+    </section>
+
+    <section id="prices">
+      <h2>Precios Destacados</h2>
+      <div id="price-comparison-container" class="grid-container">
+        <!-- Los precios se insertarán aquí dinámicamente -->
+      </div>
+    </section>
+
+    <section id="pagination">
+      <button id="prev-page">Página Anterior</button>
+      <button id="next-page">Página Siguiente</button>
+    </section>
+
+    <section id="game-details">
+      <h2>Detalles del Juego</h2>
+      <div id="game-details-container">
+        <!-- Detalles del juego se insertarán aquí dinámicamente -->
+      </div>
+    </section>
+  </main>
 
   <footer>
     <p>&copy; 2024 Videojuegos Hub - Todos los derechos reservados.</p>
   </footer>
+
+  <script src="/SCRIPTS/precios.js"></script>
 </body>
 </html>
