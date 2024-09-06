@@ -114,6 +114,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const storeName = storeMap[game.storeID]?.name || "Tienda desconocida";
             const price = game.normalPrice || "N/A";
             const salePrice = game.salePrice || "N/A";
+            const rating = game.dealRating ? `<p class="rating">Rating: ${game.dealRating}</p>` : "";
+            const metacritic = game.metacriticScore ? `
+            <p class="metacritic">
+                Metacritic Score: ${game.metacriticScore} 
+                <a href="https://www.metacritic.com${game.metacriticLink}" target="_blank">View</a>
+            </p>` : "";
+            const steamRating = game.steamRatingPercent ? `<p class="steam-rating">Steam Rating: ${game.steamRatingPercent}% (${game.steamRatingText})</p>` : "";
 
             html += `
                 <div class="card" data-deal-id="${game.dealID}">
@@ -123,6 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p>Precio con descuento aproximado: $${salePrice}</p>
                     ${savings ? `<p>Descuento: ${savings.toFixed(2)}%</p>` : ""}
                     <p>Disponible en: ${storeName}</p>
+                    ${rating}
+                    ${metacritic}
+                    ${steamRating}
                     <a href="https://www.cheapshark.com/redirect?dealID=${game.dealID}" target="_blank">Ver en ${storeName}</a>
                 </div>
             `;

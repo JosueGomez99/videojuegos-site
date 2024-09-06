@@ -118,6 +118,27 @@ main {
 .card a:hover {
   text-decoration: underline;
 }
+
+/* Estilos para los nuevos campos */
+.card .rating,
+.card .metacritic,
+.card .steam-rating {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+.card .rating span,
+.card .metacritic span,
+.card .steam-rating span {
+  font-weight: bold;
+}
+
+.card .rating,
+.card .metacritic,
+.card .steam-rating {
+  color: #333;
+}
+
 /* Estilos para el overlay de carga */
 #loading-overlay {
   position: fixed;
