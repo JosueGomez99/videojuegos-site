@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Hawk - Radar de Descuentos en Videojuegos</title>
+    <meta name="description" content="Price Hawk es tu radar de descuentos en videojuegos, ayudándote a encontrar las mejores ofertas en diversas tiendas de juegos en línea.">
+    <meta name="keywords" content="descuentos en videojuegos, ofertas de juegos, tiendas de videojuegos, comparador de precios, Price Hawk">
+    <meta name="author" content="Price Hawk">
+    <meta property="og:title" content="Price Hawk - Radar de Descuentos en Videojuegos">
+    <meta property="og:description" content="Encuentra las mejores ofertas en videojuegos con Price Hawk. Compara precios y descubre descuentos exclusivos en tiendas de juegos en línea.">
+    <meta property="og:image" content="/IMAGES/logeslogan.png">
+    <meta property="og:url" content="https://www.tusitio.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Price Hawk - Radar de Descuentos en Videojuegos">
+    <meta name="twitter:description" content="Encuentra las mejores ofertas en videojuegos con Price Hawk. Compara precios y descubre descuentos exclusivos en tiendas de juegos en línea.">
+    <meta name="twitter:image" content="/IMAGES/logeslogan.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="logeslogan.png" type="image/x-icon">
+    <link rel="canonical" href="https://www.tusitio.com">
+</head>
+<body>
+    <header>
+      <img src="logeslogan.png" alt="Logo de Price Hawk" class="header-logo">
+        <h1>Price Hawk</h1>
+        <h2>"Price Hawk: Tu Radar de Descuentos en Videojuegos"</h2>
+    </header>
+
+    <main>
+        <section id="search-section">
+            <h2>Buscar Videojuegos</h2>
+            <input type="text" id="game-search" placeholder="Buscar juego..." aria-label="Buscar juego">
+            <button id="search-button">Buscar</button>
+        </section>
+
+        <section id="store-section">
+            <h2>Tiendas</h2>
+            <div id="store-cards-container" role="list"></div>
+        </section>
+
+        <section id="price-section">
+            <h2>Lista de Videojuegos</h2>
+            <div id="price-comparison-container" role="region" aria-labelledby="price-section"></div>
+        </section>
+    </main>
+
+    <script src="precios.js"></script>
+    <!-- Overlay para animación de carga -->
+    <div id="loading-overlay">
+      <div id="loading-message">Cargando juegos...</div>
+    </div>
+
+</body>
+</html>
